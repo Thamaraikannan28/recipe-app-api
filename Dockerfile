@@ -12,4 +12,3 @@ COPY ./app /app
 
 RUN adduser -D Thamz2
 USER Thamz2
-
