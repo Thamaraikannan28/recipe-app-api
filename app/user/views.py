@@ -28,8 +28,12 @@ class ManageUserView(generics.RetrieveUpdateAPIView):
         """Retrieve and return authentication user"""
         return self.request.user
 
+class DynamicSearchFilter(filters.SearchFilter):
+    def get_search_fields(self, view, request):
+        return request.GET.getlist('search_fields', [])
+
 class ListAPIView(generics.ListCreateAPIView):
-    search_fields = ['name','email']
-    filter_backends = (filters.SearchFilter,)
+    # search_fields = ['name','email']
+    filter_backends = (DynamicSearchFilter,)
     queryset = get_user_model().objects.all()
     serializer_class = QuestionSerializer
