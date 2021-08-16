@@ -52,3 +52,10 @@ class AuthTokenSerializer(serializers.Serializer):
 
         attrs['user'] = user
         return attrs
+
+
+class QuestionSerializer(serializers.ModelSerializer):
+    """Serializer for listing users"""
+    class Meta:
+        model = get_user_model()
+        fields = '__all__'
