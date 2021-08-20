@@ -14,5 +14,6 @@ RUN mkdir /app
 WORKDIR /app
 COPY ./app /app
 
-RUN adduser -D Thamz2
+RUN adduser -D Thamz2 && chown -R Thamz2 /app
+RUN chown Thamz2:Thamz2 -R /app
 USER Thamz2

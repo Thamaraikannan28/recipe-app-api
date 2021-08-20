@@ -4,7 +4,8 @@ from rest_framework import generics, authentication, permissions, filters
 from rest_framework.authtoken.views import ObtainAuthToken
 from rest_framework.settings import api_settings
 
-from user.serializers import UserSerializer, AuthTokenSerializer, QuestionSerializer
+from user.serializers import UserSerializer, \
+                             AuthTokenSerializer, QuestionSerializer
 
 
 class CreateUserView(generics.CreateAPIView):
@@ -28,9 +29,11 @@ class ManageUserView(generics.RetrieveUpdateAPIView):
         """Retrieve and return authentication user"""
         return self.request.user
 
+
 class DynamicSearchFilter(filters.SearchFilter):
     def get_search_fields(self, view, request):
         return request.GET.getlist('search_fields', [])
+
 
 class ListAPIView(generics.ListCreateAPIView):
     # search_fields = ['name','email']
