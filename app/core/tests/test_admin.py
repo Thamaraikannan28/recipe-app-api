@@ -39,3 +39,6 @@ class AdminSiteTests(TestCase):
         res = self.client.get(url)
 
         self.assertEqual(res.status_code, 200)
+
+    def test_recipe_file_name_uuid(self):
+        """Test that image is saved in the current location"""
