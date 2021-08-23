@@ -1,4 +1,5 @@
 # from django.shortcuts import render
+from core.models import Faculty
 from django.contrib.auth import get_user_model
 from rest_framework import generics, authentication, permissions, filters
 from rest_framework.authtoken.views import ObtainAuthToken
@@ -38,5 +39,5 @@ class DynamicSearchFilter(filters.SearchFilter):
 class ListAPIView(generics.ListCreateAPIView):
     # search_fields = ['name','email']
     filter_backends = (DynamicSearchFilter,)
-    queryset = get_user_model().objects.all()
+    queryset = Faculty.objects.all()
     serializer_class = QuestionSerializer

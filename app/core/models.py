@@ -87,3 +87,14 @@ class Recipe(models.Model):
 
     def __str__(self):
         return self.title
+
+
+class Faculty(models.Model):
+    """Faculty object"""
+    faculty_id = models.CharField(max_length=8, unique=True)
+    name = models.CharField(max_length=255)
+    designation = models.CharField(max_length=255)
+    department = models.CharField(max_length=255)
+    date_of_joining = models.DateField()
+    mobile_number = models.BigIntegerField()
+    email = models.EmailField(unique=True)
